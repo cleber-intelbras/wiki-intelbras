@@ -28,6 +28,7 @@ RUN set -eux; \
 		mbstring \
 		mysqli \
 		opcache \
+		libldap2-dev \
 	; \
 	\
 	pecl install apcu-5.1.17; \
@@ -90,8 +91,3 @@ RUN set -eux; \
 	tar -x --strip-components=1 -f mediawiki.tar.gz; \
 	rm mediawiki.tar.gz; \
 	chown -R www-data:www-data extensions skins cache images
-
-#Adicionando Extensao LDAP
-RUN \
-    apt-get install -y ldap-utils libldap2-dev && \
-    rm -rf /var/lib/apt/lists/*
