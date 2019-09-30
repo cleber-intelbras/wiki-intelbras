@@ -28,7 +28,7 @@ RUN set -eux; \
 		mbstring \
 		mysqli \
 		opcache \
-		libldap2-dev \
+		ldap \
 	; \
 	\
 	pecl install apcu-5.1.17; \
