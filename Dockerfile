@@ -93,6 +93,6 @@ RUN set -eux; \
 
 #Adicionando Extensao LDAP
 RUN \
-    apt-get install libldap2-dev -y && \
-    docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ && \
-    docker-php-ext-install ldap
+    apt-get install -y php7.2-ldap
+#    docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ && \
+#    docker-php-ext-install ldap
