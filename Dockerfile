@@ -90,5 +90,12 @@ RUN set -eux; \
 	tar -x --strip-components=1 -f mediawiki.tar.gz; \
 	rm mediawiki.tar.gz; \
 	chown -R www-data:www-data extensions skins cache images
-RUN docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu
-RUN docker-php-ext-install ldap
+#####################################
+# LDAP:
+#####################################
+RUN \
+    apt-get update && \
+    apt-get install libldap2-dev -y && \
+    #rm -rf /var/lib/apt/lists/* && \
+    docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ && \
+    docker-php-ext-install ldap
