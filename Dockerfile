@@ -28,7 +28,6 @@ RUN set -eux; \
 		mbstring \
 		mysqli \
 		opcache \
-		ldap \
 	; \
 	\
 	pecl install apcu-5.1.17; \
@@ -91,3 +90,5 @@ RUN set -eux; \
 	tar -x --strip-components=1 -f mediawiki.tar.gz; \
 	rm mediawiki.tar.gz; \
 	chown -R www-data:www-data extensions skins cache images
+RUN docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu
+RUN docker-php-ext-install ldap
